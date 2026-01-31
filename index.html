@@ -1,23 +1,586 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+
+  <!-- Schema.org FAQ 구조화 데이터 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "충치보험 가격(비용)은 얼마인가요? 견적을 받는 방법은 무엇인가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "충치보험료는 가입자의 연령과 성별, 선택한 보장 범위(충치 치료, 보철 치료 포함 여부), 보험사별 상품의 종류에 따라 달라집니다. 정확한 예상 금액을 확인하려면 여러 보험사의 비교견적을 받아보는 것이 가장 효과적입니다. 특히 2026년 기준으로 상품별 차이가 있으므로 전문가와 상담하는 것이 좋습니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "충치보험 가입 시 반드시 확인해야 할 '면책기간'과 '감액기간'이란 무엇인가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "면책기간은 보험 가입 후 일정 기간(보통 90일~1년) 동안은 보험금을 지급하지 않는 기간입니다. 감액기간은 면책기간 이후 일정 기간(보통 1년~2년) 동안 보험금을 일부만 지급하는 기간입니다. 이러한 기간은 보험사별로 상이하므로 가입 전에 반드시 확인하여야 합니다. 특히 보철 치료(임플란트, 크라운)의 경우 면책기간과 감액기간이 길게 설정되는 경우가 많습니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "충치 치료 보장과 보철 치료 보장의 차이점은 무엇인가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "충치 치료 보장은 치아 보존을 위한 치료(아말감, 레진, 인레이/온레이 등)에 대한 보장입니다. 보철 치료 보장은 치아를 대체하거나 씌우는 치료(임플란트, 브릿지, 크라운 등)에 대한 보장입니다. 보철 치료는 치료비용이 훨씬 높기 때문에 충치보험 상품은 대개 보철 치료 보장을 별도의 특약으로 운영하거나 보장 금액에 제한을 둡니다. 가입자는 자신의 치아 상태에 맞춰 필요한 보장 범위를 신중하게 선택해야 합니다."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- 스타일: 부드럽고 다채로운 색, 타이틀 강조, 계층 구조 -->
+  <style>
+    :root {
+      --primary-color: #0077B6; /* Deep Ocean Blue */
+      --secondary-color: #00B4D8; /* Bright Sky Blue */
+      --accent-color: #90E0EF; /* Light Aqua */
+      --highlight-color: #EBF7FF; /* Very Light Blue */
+      --text-color: #1A3C4A; /* Dark Text */
+      --bg-light: #F0F8FF; /* Off-white background */
+      --bg-white: #ffffff;
+      --btn-color: #FF6F61; /* Coral Red */
+      --btn-hover: #FF4F3B; /* Darker Coral */
+      --chart-bar1: #0077B6;
+      --chart-bar2: #00B4D8;
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      margin:0; padding:0;
+      background-color: var(--bg-light);
+      color: var(--text-color);
+      line-height:1.7;
+    }
+    .container {
+      max-width: 1000px;
+      margin:0 auto;
+      padding:0 20px;
+    }
+    header {
+      background-color: var(--primary-color);
+      padding: 30px 20px;
+      text-align: center;
+      color: var(--bg-white);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.8em;
+      font-weight:700;
+    }
+    header h1 a {
+      color: var(--bg-white);
+      text-decoration: none;
+    }
+    .hero {
+      background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+      color: var(--bg-white);
+      text-align: center;
+      padding: 90px 20px;
+    }
+    .hero h1 {
+      font-size: 3.5em;
+      margin-bottom: 20px;
+      font-weight:900;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+    .hero p {
+      font-size: 1.4em;
+      margin-bottom: 35px;
+      font-weight: 500;
+    }
+    .cta-btn {
+      background-color: var(--btn-color);
+      color: var(--bg-white);
+      padding: 18px 45px;
+      font-size:1.3em;
+      font-weight: bold;
+      border:none;
+      border-radius:50px;
+      cursor:pointer;
+      transition: background-color 0.3s, transform 0.2s;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    .cta-btn:hover {
+      background-color: var(--btn-hover);
+      transform: translateY(-3px);
+    }
+    .compare-form-box {
+      background-color: var(--bg-white);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      margin-top: 30px;
+      text-align: left;
+    }
+    .compare-form-box h2 {
+      color: var(--primary-color);
+      text-align: center;
+      margin-bottom: 25px;
+      font-size:2.2em;
+    }
+    .compare-form-box label {
+      display: block;
+      margin-bottom:8px;
+      font-weight:500;
+      color: var(--text-color);
+    }
+    .compare-form-box input, .compare-form-box select {
+      width:100%;
+      padding:12px;
+      margin-bottom:20px;
+      border:1px solid #ccc;
+      border-radius:6px;
+      box-sizing:border-box;
+      font-size:1em;
+    }
+    .form-submit-btn {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      font-size: 1.2em;
+      margin-top: 10px;
+      background-color: var(--btn-color);
+      color: var(--bg-white);
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .form-submit-btn:hover {
+      background-color: var(--btn-hover);
+    }
+
+    .content-section {
+      margin-top: 40px;
+      background-color: var(--bg-white);
+      padding: 60px 0;
+      border-radius:10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+    .content-section h2 {
+      font-size: 2.8em;
+      color: var(--primary-color);
+      margin-bottom:30px;
+      font-weight:700;
+      text-align:center;
+      border-bottom: 3px solid var(--accent-color);
+      padding-bottom: 10px;
+      display: inline-block;
+      margin-left: 50%;
+      transform: translateX(-50%);
+    }
+    .content-section h3 {
+      font-size:1.8em;
+      color: var(--secondary-color);
+      margin-top:40px;
+      margin-bottom:15px;
+      font-weight:700;
+    }
+    .content-section p {
+      margin-bottom: 20px;
+      font-size: 1.1em;
+      text-align: justify;
+    }
+    .content-section ul, .content-section ol {
+      padding-left: 20px;
+      margin-bottom: 20px;
+      font-size: 1.1em;
+    }
+    .feature-grid {
+      display:flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-top:30px;
+    }
+    .feature-grid .item {
+      width: calc(33.33% - 20px);
+      margin:10px;
+      padding:20px;
+      background-color: var(--highlight-color);
+      border-radius:8px;
+      text-align:center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .feature-grid .item h3 {
+      margin: 10px 0;
+      font-size: 1.4em;
+      color: var(--primary-color);
+    }
+    .keyword-list {
+      list-style:none;
+      padding:0;
+      display:flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top:30px;
+    }
+    .keyword-list li {
+      background-color: var(--secondary-color);
+      color: var(--bg-white);
+      padding:10px 20px;
+      margin:5px;
+      border-radius:20px;
+      font-weight:500;
+      transition: background-color 0.3s;
+    }
+    .keyword-list li:hover {
+      background-color: var(--primary-color);
+    }
+
+    .faq-item {
+      border-bottom:1px solid #ddd;
+      padding:20px 0;
+    }
+    .faq-item h3 {
+      cursor:pointer;
+      display:flex;
+      justify-content: space-between;
+      align-items:center;
+      font-size:1.4em;
+      color: var(--primary-color);
+      margin: 0;
+    }
+    .faq-item h3::after {
+      content: '+';
+      font-size:1.5em;
+      color: var(--secondary-color);
+      transition: transform 0.3s;
+    }
+    .faq-item.active h3::after {
+      content: '-';
+      transform: rotate(180deg);
+    }
+    .faq-item p {
+      display: none;
+      padding-top:10px;
+      color:#555;
+      font-size:1.1em;
+      line-height: 1.6;
+    }
+    .faq-item.active p {
+      display: block;
+    }
+
+    footer {
+      background-color: var(--primary-color);
+      color: var(--bg-white);
+      text-align:center;
+      padding: 40px 20px;
+      font-size:0.9em;
+    }
+    footer a {
+      color: var(--bg-white);
+      text-decoration:none;
+      margin:0 10px;
+    }
+    footer a:hover {
+      text-decoration:underline;
+    }
+
+    /* Table styling for comparison */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      font-size: 1em;
+    }
+    .data-table th, .data-table td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: center;
+    }
+    .data-table th {
+      background-color: var(--secondary-color);
+      color: var(--bg-white);
+      font-weight: bold;
+    }
+    .data-table tr:nth-child(even) {
+      background-color: var(--highlight-color);
+    }
+    .data-table td strong {
+      color: var(--primary-color);
+      font-weight: 700;
+    }
+
+    /* Chart styling */
+    .chart-container {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: var(--highlight-color);
+      border-radius: 8px;
+      text-align: center;
+    }
+    .chart-bar {
+      width: 100%;
+      height: 200px;
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-end;
+      margin-bottom: 10px;
+    }
+    .bar {
+      width: 15%;
+      background-color: var(--primary-color);
+      transition: height 0.5s;
+      position: relative;
+      border-radius: 5px 5px 0 0;
+    }
+    .bar-label {
+      font-size: 0.9em;
+      margin-top: 5px;
+      color: var(--text-color);
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+    }
+    .bar-value {
+      position: absolute;
+      top: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-weight: 700;
+      color: var(--text-color);
+      font-size: 0.9em;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width:768px) {
+      .hero h1 { font-size:2.4em; }
+      .hero p { font-size:1.2em; }
+      .cta-btn { padding:15px 30px; font-size:1.1em; }
+      .compare-form-box { padding:25px; }
+      .content-section h2 { font-size:2.2em; }
+      .feature-grid .item { width:100%; margin:10px 0; }
+      .keyword-list li { margin:3px; font-size:0.9em; }
+      .data-table { font-size: 0.9em; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1><a href="/">충치보험 가이드</a></h1>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>2026년 충치보험 비교 및 추천</h1>
+        <p>충치 치료, 임플란트 비용 걱정 없는 현명한 선택을 위한 전문가 가이드</p>
+        <div class="compare-form-box">
+          <h2>맞춤형 충치보험 견적 비교 요청</h2>
+          <p>간단한 정보 입력으로 나에게 딱 맞는 예상 보험료 및 상품 정보를 확인하세요.</p>
+          <form action="#" method="post">
+            <label for="name">이름</label>
+            <input type="text" id="name" name="name" placeholder="이름을 입력하세요" required>
+            <label for="phone">연락처</label>
+            <input type="tel" id="phone" name="phone" placeholder="휴대폰 번호를 입력하세요" required>
+            <label for="age">나이</label>
+            <input type="number" id="age" name="age" placeholder="만 나이를 입력하세요" required>
+            <label for="coverage-type">희망 보장 내역 (보존/보철)</label>
+            <select id="coverage-type" name="coverage-type" required>
+              <option value="">-- 선택하세요 --</option>
+              <option value="preservation">보존 치료(충치) 위주</option>
+              <option value="prosthetic">보철 치료(임플란트) 포함</option>
+              <option value="all">전체 보장 희망</option>
+            </select>
+            <button type="submit" class="form-submit-btn">견적 요청하기</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>충치보험, 왜 지금 가입해야 할까요?</h2>
+        <div class="feature-grid">
+          <div class="item">
+            <h3>비싼 비급여 치료비</h3>
+            <p>국민건강보험이 적용되지 않는 임플란트, 크라운 등의 치료 비용은 수백만 원에 달합니다. 충치보험은 이러한 고액 치료비에 대한 부담을 크게 줄여줍니다.</p>
+          </div>
+          <div class="item">
+            <h3>예고 없는 치과 치료</h3>
+            <p>충치는 초기에는 증상이 없어 방치하기 쉽지만, 발견 즉시 치료하지 않으면 더 큰 치료가 필요합니다. 보험은 갑작스러운 치료에도 대비할 수 있게 해줍니다.</p>
+          </div>
+          <div class="item">
+            <h3>다양한 보장 상품</h3>
+            <p>단순 충치 치료부터 고가의 임플란트 보철 치료까지, 개인의 필요에 맞는 다양한 상품이 출시되어 있습니다. 2026년 기준으로 상품 선택 폭이 넓어졌습니다.</p>
+          </div>
+        </div>
+
+        <h3 style="margin-top:50px;">함께 많이 찾는 키워드</h3>
+        <ul class="keyword-list">
+          <li>#충치보험가격</li>
+          <li>#치아보험비교</li>
+          <li>#임플란트보험</li>
+          <li>#충치보험순위</li>
+          <li>#어린이치아보험</li>
+          <li>#치아보험장단점</li>
+          <li>#면책기간감액기간</li>
+          <li>#2026충치보험</li>
+          <li>#내돈내산후기</li>
+          <li>#충치보험가입팁</li>
+          <li>#저렴한충치보험</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>충치보험 핵심 분석: 보존 vs. 보철의 차이점</h2>
+        <p>충치보험은 크게 보존 치료 보장과 보철 치료 보장으로 나뉩니다. 두 가지 유형 중 어떤 것이 본인에게 맞는지 판단하는 것이 중요합니다. 보존 치료는 치아의 형태를 유지하며 충치를 제거하는 치료를, 보철 치료는 치아를 완전히 대체하거나 씌우는 치료를 의미합니다. <a href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9%EC%A0%95%EB%B3%B4/%EA%B5%AD%EB%AF%BC%EA%B1%B4%EA%B0%95%EB%B3%B4%ED%97%98%EB%B2%95" target="_blank" rel="noopener">국민건강보험</a>의 급여 적용 여부와 관계없이 비급여 항목은 비용이 크게 발생할 수 있습니다.</p>
+
+        <h3>1. 보존 치료 (충치 치료)</h3>
+        <ul>
+          <li><strong>대상:</strong> 충치로 인해 치아가 손상되었을 때, 이를 떼우거나 덮는 치료.</li>
+          <li><strong>주요 치료 항목:</strong> 레진( Resin), 인레이(Inlay), 온레이(Onlay), 아말감(Amalgam).</li>
+          <li><strong>보장 특징:</strong> 비교적 소액 치료이므로 횟수 제한이나 감액기간이 짧거나 없는 경우가 많습니다. 레진 치료는 국민건강보험이 적용되지 않아 비용 부담이 클 수 있습니다.</li>
+          <li><strong>추천 대상:</strong> 젊은 연령층, 충치가 자주 발생하는 경우, 치아 관리에 신경 쓰는 사람.</li>
+        </ul>
+
+        <h3>2. 보철 치료 (임플란트/크라운)</h3>
+        <ul>
+          <li><strong>대상:</strong> 충치나 사고로 치아를 상실했을 때 대체하는 치료.</li>
+          <li><strong>주요 치료 항목:</strong> 임플란트(Implant), 크라운(Crown), 브릿지(Bridge).</li>
+          <li><strong>보장 특징:</strong> 고액 치료이므로 면책기간(1~2년)과 감액기간(1~2년)이 길고, 연간 보장 개수에 제한이 있습니다. 2026년 기준으로 임플란트 보장금액은 상품별로 큰 차이가 납니다.</li>
+          <li><strong>추천 대상:</strong> 중장년층, 이미 치아를 상실했거나 노화로 인해 보철 치료가 예상되는 사람.</li>
+        </ul>
+
+        <h3 style="margin-top:50px;">충치보험 가입자가 알아야 할 핵심 키워드</h3>
+        <ul style="list-style-type: disc;">
+            <li><strong>면책기간 (면제기간):</strong> 보험 가입 후 일정 기간(보통 90일~1년) 내에 발생한 치아 질환에 대해서는 보장을 받을 수 없는 기간입니다. 보험금을 받기 위해서는 이 기간이 지나야 합니다.</li>
+            <li><strong>감액기간 (감액지급기간):</strong> 면책기간이 끝난 후 일정 기간(보통 1년~2년) 동안 보험금을 50%만 지급하는 기간입니다. 고액 치료인 임플란트 등 보철 치료에 주로 적용됩니다.</li>
+            <li><strong>갱신형 vs 비갱신형:</strong> 갱신형은 보험료가 일정 주기(5년, 10년 등)마다 변경(대부분 인상)되는 상품이며, 비갱신형은 가입 시점의 보험료가 만기까지 고정되는 상품입니다. 비갱신형이 초기에 비쌀 수 있지만 장기적으로 총 납입 비용이 저렴한 경우가 많습니다.</li>
+            <li><strong>진단형 vs 비진단형:</strong> 진단형은 가입 전 치과 검진을 받아야 하며 보장이 더 확실한 대신 가입이 까다롭습니다. 비진단형은 서류 심사만으로 가입할 수 있지만 보장이 진단형보다 작거나 제한적일 수 있습니다.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>충치 치료별 평균 예상 비용 및 보험 보장 분석 (2026년 기준)</h2>
+        <p>충치보험 가입을 고려할 때, 실제 치료 비용이 얼마나 드는지 아는 것이 중요합니다. 아래 표는 2026년 기준으로 치과에서 발생하는 비급여 치료의 평균 예상 금액을 보여줍니다. 이러한 고액의 치료비용 때문에 충치보험의 필요성이 더욱 강조됩니다.</p>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>치료 항목</th>
+              <th>평균 예상 금액 (치아 1개당)</th>
+              <th>보험 보장 여부 (일반적)</th>
+              <th>보험 가입 시 절감 효과</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>레진 치료</td>
+              <td>10만원 ~ 15만원</td>
+              <td>O (보존 치료)</td>
+              <td>10만원 내외 절감</td>
+            </tr>
+            <tr>
+              <td>인레이/온레이 치료</td>
+              <td>20만원 ~ 40만원</td>
+              <td>O (보존 치료)</td>
+              <td>20~30만원 내외 절감</td>
+            </tr>
+            <tr>
+              <td>크라운 치료</td>
+              <td>40만원 ~ 70만원</td>
+              <td>O (보철 치료)</td>
+              <td>40만원 내외 절감</td>
+            </tr>
+            <tr>
+              <td>임플란트 치료</td>
+              <td>100만원 ~ 200만원</td>
+              <td>O (보철 특약)</td>
+              <td>50만원 이상 절감 가능</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p style="text-align: right; font-size: 0.9em; margin-top: 10px;">* 금액은 치과별, 재료별로 차이가 있을 수 있습니다. 보험 보장금액은 상품별 약관에 따릅니다.</p>
+
+        <h3 style="margin-top: 50px;">충치보험료의 '평균 금액'과 '예상 견적' 차이점</h3>
+        <p>많은 분들이 충치보험료가 '얼마인지' 궁금해하지만, 개인의 상황에 따라 금액이 크게 달라집니다. '평균 금액'은 참고 자료일 뿐, 정확한 '예상 견적'은 가입자의 나이, 성별, 건강 상태, 선택한 특약에 따라 개별적으로 산출되어야 합니다. 특히 임플란트 보철 치료를 포함하는 특약을 선택할 경우 보험료는 크게 상승할 수 있으므로, 본인의 필요에 맞춰 맞춤 견적을 요청해야 저렴한 충치보험을 찾을 수 있습니다.</p>
+
+        <h3 style="margin-top: 50px;">충치보험 가입자가 흔히 하는 실수와 절약 팁</h3>
+        <ul>
+            <li><strong>면책기간을 모르고 가입하는 경우:</strong> 가입 후 바로 치과에 방문하여 치료를 받으려 했으나, 면책기간 때문에 보장을 받지 못하는 경우가 흔합니다. 반드시 가입 전 약관을 확인해야 합니다.</li>
+            <li><strong>중복 보장 여부 확인:</strong> 이미 다른 보험에 치아 관련 특약이 있는지 확인해야 합니다. 치과보험은 중복 보장이 되지만, 불필요한 비용을 절감하기 위해 보장 내용과 금액을 비교하는 것이 좋습니다.</li>
+            <li><strong>치과 치료를 미루는 경우:</strong> 충치보험에 가입했더라도 충치를 방치하면 치료비용이 더 커지고 보험금 한도를 초과할 수 있습니다. 정기적인 치과 검진과 관리가 병행되어야 합니다.</li>
+            <li><strong>비교 견적의 중요성:</strong> 여러 보험사의 상품을 비교하여 '싼곳'을 찾는 것이 중요합니다. A사의 '내돈내산 후기'가 좋더라도 B사의 상품이 나에게 더 저렴한 충치보험일 수 있습니다.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>자주 묻는 질문 (FAQ)</h2>
+
+        <div class="faq-item">
+          <h3>Q1. 가입 전에 이미 충치 치료를 받았거나 진단받은 치아가 충치보험으로 보장되나요?</h3>
+          <p>A. 일반적으로 가입 전 이미 진단받았거나 치료 중인 치아는 보장에서 제외됩니다. 보험사에서는 고지의무를 통해 현재의 치아 상태를 확인합니다. 가입 전 알릴 의무를 위반할 경우 보험 가입이 거절되거나 향후 보험금 지급에 문제가 발생할 수 있습니다.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Q2. 충치보험 가입 시 '무해지 환급형' 상품은 어떤 장단점이 있나요?</h3>
+          <p>A. 무해지 환급형 상품은 납입 기간 중에 해지할 경우 해지환급금이 없거나 일반형 상품보다 적습니다. 대신 일반 상품보다 보험료가 저렴하다는 장점이 있습니다. 장기간 유지할 계획이라면 '저렴한' 보험료로 설계할 수 있는 좋은 방법이지만, 중도 해지 시 손해를 볼 수 있다는 단점을 고려해야 합니다.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Q3. 충치보험 가입 '순위'나 '추천 상품'을 참고할 때 주의할 점이 있나요?</h3>
+          <p>A. 인터넷에 나와 있는 '충치보험 순위'나 '추천 상품'은 일반적으로 광고나 홍보 목적으로 작성된 경우가 많습니다. 특정 상품이 무조건 '최고'라고 단정하기보다는, 가입자의 나이, 치아 상태, 희망 보장 범위 등을 종합적으로 고려하여 비교 견적을 통해 나에게 맞는 상품을 선택하는 것이 중요합니다. 특히 2026년 기준으로 상품별 특징이 다양해졌습니다.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Q4. 비갱신형 충치보험을 선택하는 것이 무조건 유리한가요?</h3>
+          <p>A. 비갱신형은 보험료가 오르지 않는다는 장점이 있어 장기적으로 총 납입 비용이 저렴해질 수 있습니다. 하지만 초기 보험료가 갱신형보다 비싸다는 단점이 있습니다. 본인의 연령과 가입 기간 목표에 따라 유리한 유형이 달라집니다. 40대 이상이라면 갱신형을 통해 초반 보험료 부담을 줄이는 것이 나을 수도 있습니다.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Q5. 충치보험 가입 후 치과 방문 시 어떤 서류가 필요한가요?</h3>
+          <p>A. 일반적으로 치과 치료 후 보험금을 청구하기 위해서는 진단서, 치료비 영수증(세부내역서 포함), 초진 기록지 등이 필요합니다. 보험사별로 요구하는 서류가 다를 수 있으므로 사전에 확인하는 것이 좋습니다.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>신뢰할 수 있는 외부 자료 및 참고 링크</h2>
+        <p>충치보험 가입을 결정하기 전에 공신력 있는 기관의 자료를 참고하여 정확한 정보를 확인하세요.</p>
+        <ul>
+          <li><a href="https://www.fss.or.kr/fss/main/index.do" target="_blank" rel="noopener">금융감독원 (FSS) – 금융소비자 정보포털 파인</a>: 보험 상품 비교 및 약관 관련 정보를 확인할 수 있습니다.</li>
+          <li><a href="https://www.sbiz.or.kr/cose/main.do" target="_blank" rel="noopener">소상공인시장진흥공단</a>: 자영업자 및 소상공인 대상 보험 상품 정보를 참고할 수 있습니다.</li>
+          <li><a href="https://www.kca.go.kr/main.do" target="_blank" rel="noopener">한국소비자원</a>: 치아보험 관련 소비자 분쟁 사례 및 소비자 피해 예방 정보를 제공합니다.</li>
+          <li><a href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9%EC%A0%95%EB%B3%B4/%EA%B5%AD%EB%AF%BC%EA%B1%B4%EA%B0%95%EB%B3%B4%ED%97%98%EB%B2%95" target="_blank" rel="noopener">국민건강보험법</a>: 치아 치료 중 급여 항목과 비급여 항목에 대한 법적 기준을 확인할 수 있습니다.</li>
+          <li><a href="https://ko.wikipedia.org/wiki/%EC%B9%98%EC%95%84%EB%B3%B4%ED%97%98" target="_blank" rel="noopener">치아보험 - 위키백과</a>: 치아보험의 역사와 주요 보장 내용에 대한 일반적인 정보를 얻을 수 있습니다.</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // FAQ 토글 기능
+    document.querySelectorAll('.faq-item h3').forEach(item => {
+      item.addEventListener('click', event => {
+        const parent = item.parentElement;
+        parent.classList.toggle('active');
+      });
+    });
+  </script>
+
+  
